@@ -1,0 +1,125 @@
+<div id='mainContent'></div>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.11.2"></script>
+<title>Alan AI Pong Game with HTML & JavaScript</title>
+<div>
+  <h1 style="color:white;"><center>Alan AI Pong Game</center><FONT COLOR="#ff0000"> </FONT></h1>
+</div>
+<div class="alan-btn"></div>
+<script src="ponggame.js"></script>
+<div style="text-align:center">
+  <style>
+    .button {
+      border: none;
+      color: white;
+      padding: 16px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      transition-duration: 0.4s;
+      cursor: pointer;
+    }
+ 
+    .button1 {
+      background-color: white;
+      color: black;
+      border: 2px solid #4CAF50;
+    }
+ 
+    .button1:hover {
+      background-color: #4CAF50;
+      color: white;
+    }
+ 
+    .button2 {
+      background-color: white;
+      color: black;
+      border: 2px solid #008CBA;
+    }
+ 
+    .button2:hover {
+      background-color: #008CBA;
+      color: white;
+    }
+ 
+    .button3 {
+      background-color: white;
+      color: black;
+      border: 2px solid #FF5F1F;
+    }
+ 
+    .button3:hover {
+      background-color: #FF5F1F;
+      color: white;
+    }
+  </style>
+ 
+  <button class="button button1" onclick="StartButton()">Start Game!</button>
+  <button class="button button3" onclick="PauseGame()">Pause Game!</button>
+  <button class="button button2" onclick="restartButton()">Restart Game!</button>
+ 
+</div>
+<script type="text/javascript"
+ src="https://studio.alan.app/web/lib/alan_lib.min.js"></script>
+<script>
+  var alanBtnInstance = alanBtn({
+    key: "6bba4fa9581a960f0e64358a689f9bf62e956eca572e1d8b807a3e2338fdd0dc/stage",
+    onCommand: function (commandData) {
+        if(commandData.command === "move_left") {
+            Left()
+            OnceLeft = false;
+        }
+        if(commandData.command === "move_right") {
+            Right()
+            OnceRight = false;
+        }
+        if(commandData.command === "move_left_continuously") {
+            LeftCont()
+            LeftContOnce = false;
+        }
+        if(commandData.command === "move_right_continuously") {
+            RightCont()
+            RightContOnce = false;
+        }
+        if(commandData.command === "Starting-Game") {
+            StartButton()
+        }
+        if(commandData.command === "Restarting-Game") {
+            restartButton()
+        }
+        if(commandData.command === "Pause-Game") {
+            PauseGame()
+        }
+    },
+   
+    rootEl: document.getElementById("alan-btn"),
+});
+</script>
+ 
+<body bgcolor=”#800000"></body>  
+<div class="scoreboard">
+  <head>
+    <style>
+      h1{text-align:center;
+      bottom: 0;}
+    </style>
+  </head>
+  <body>
+    <h1 id="demo2" style="color:white;"></h1>
+    <script>
+      UserScore()
+    </script>
+  </body>
+<div>
+ 
+<div class="scoreboard">
+  <head>
+  </head>
+  <body>
+    <h1 id="demo" style="color:white;"></h1>
+    <script>
+      AIScore()
+    </script>
+  </body>
+</div>
